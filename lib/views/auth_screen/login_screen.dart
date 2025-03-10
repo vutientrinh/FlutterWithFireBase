@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutterwithfirebase/consts/consts.dart';
+import 'package:flutterwithfirebase/views/auth_screen/signup_screen.dart';
 import 'package:flutterwithfirebase/widget_common/applogo_widget.dart';
 import 'package:flutterwithfirebase/widget_common/bg_widget.dart';
 import 'package:flutterwithfirebase/widget_common/custom_textfield.dart';
 import 'package:flutterwithfirebase/widget_common/our_button.dart';
+import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -33,7 +35,9 @@ class LoginScreen extends StatelessWidget {
                       .box.width(context.screenWidth - 50).make(),
                   5.heightBox,
                   createNewAccount.text.color(fontGrey).make(),
-                  ourButton(title: signUp, color: lightGolden, textColor: redColor, onPress: (){})
+                  ourButton(title: signUp, color: lightGolden, textColor: redColor, onPress: (){
+                    Get.to(()=> SignupScreen());
+                  })
                       .box.width(context.screenWidth - 50).make(),
                   10.heightBox,
                   loginWith.text.color(fontGrey).make(),

@@ -46,7 +46,6 @@ class _SplashScreenState extends State<SplashScreen> {
             5.heightBox,
             appversion.text.white.make(),
             Spacer(),
-            credits.text.white.fontFamily(semibold).make(),
             30.heightBox,
 
           ],
