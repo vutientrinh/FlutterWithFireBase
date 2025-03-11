@@ -3,8 +3,8 @@ import 'package:flutterwithfirebase/consts/consts.dart';
 import 'package:flutterwithfirebase/controller/home_controller.dart';
 import 'package:get/get.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class Home extends StatelessWidget {
+  const Home({super.key});
 
   //init home controller
 
