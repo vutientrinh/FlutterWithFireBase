@@ -17,7 +17,16 @@ const nameHint = "Type your name";
 const privacyPolicy = "Privacy Policy";
 const termAndCond = "Term and Conditions";
 
-
 const alreadyHaveAccount = "Already have an account?  ";
 
-const home = "Home", categories = "Categories", cart = "Cart", account = "Account";
+const home = "Home",
+    categories = "Categories",
+    cart = "Cart",
+    account = "Account";
+const searchAnyThing = "Search anything ... ",
+    todayDeal = "Today's Deal",
+    flashSale = "Flash Sale",
+    topSellers = "Top Sellers",
+    brand = "Brand",
+    topCategory = "Top Categories",
+    featuredCategories = "Featured Categories";
