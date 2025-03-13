@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutterwithfirebase/consts/consts.dart';
+import 'package:flutterwithfirebase/views/category_screen/category_details.dart';
 import 'package:flutterwithfirebase/widget_common/bg_widget.dart';
+import 'package:get/get.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({super.key});
@@ -29,12 +31,14 @@ class CategoryScreen extends StatelessWidget {
                   categoryImage[index],
                   height: 120,
                   width: 200,
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                 ),
                 10.heightBox,
                 categoryList[index].text.color(darkFontGrey).align(TextAlign.center).make(),
               ],
-            ).box.rounded.clip(Clip.antiAlias).white.make();
+            ).box.rounded.clip(Clip.antiAlias).white.make().onTap((){
+              Get.to(()=>CategoryDetails(title: categoryList[index]));
+            });
           },
         ),
       ),
