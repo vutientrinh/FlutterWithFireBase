@@ -13,17 +13,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: appname,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.transparent,
-        appBarTheme: const AppBarTheme(backgroundColor: Colors.transparent),
+        appBarTheme: const AppBarTheme(
+            iconTheme: IconThemeData(color: darkFontGrey),
+            backgroundColor: Colors.transparent),
         fontFamily: regular,
       ),
-      home: const SplashScreen() ,
+      home: const SplashScreen(),
     );
   }
 }
-

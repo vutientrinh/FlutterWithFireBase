@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutterwithfirebase/consts/consts.dart';
+import 'package:flutterwithfirebase/views/category_screen/item_details.dart';
 import 'package:flutterwithfirebase/widget_common/bg_widget.dart';
+import 'package:get/get.dart';
 
 class CategoryDetails extends StatelessWidget {
   final String? title;
@@ -81,7 +83,10 @@ class CategoryDetails extends StatelessWidget {
                           .roundedSM
                           .padding(const EdgeInsets.all(8))
                           .outerShadowSm
-                          .make();
+                          .make()
+                      .onTap((){
+                        Get.to(()=>ItemDetails(title: "Dumy item"));
+                      });
                     })),
           ],
         ),
