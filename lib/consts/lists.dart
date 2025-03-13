@@ -14,3 +14,26 @@ const featureImage2 = [imgS4, imgS5, imgS6];
 
 const featureTitles1 = [womenDress, girlsDress, girlsWatches];
 const featureTitles2 = [boysGlasses, mobilePhone, tShirts];
+
+const categoryList = [
+  womenDress,
+  menClothingFashion,
+  compAccess,
+  automobile,
+  kidToys,
+  sports,
+  jewelery,
+  cellphone,
+  furniture
+];
+const categoryImage = [
+  imgFc1,
+  imgFc2,
+  imgFc3,
+  imgFc4,
+  imgFc5,
+  imgFc6,
+  imgFc7,
+  imgFc8,
+  imgFc9
+];
