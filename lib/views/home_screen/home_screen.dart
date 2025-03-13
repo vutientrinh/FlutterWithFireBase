@@ -237,6 +237,7 @@ class HomeScreen extends StatelessWidget {
                                 .fontFamily(semibold)
                                 .size(16)
                                 .make(),
+                            10.heightBox,
                           ],
                         )
                             .box

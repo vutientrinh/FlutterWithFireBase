@@ -17,13 +17,13 @@ const featureTitles2 = [boysGlasses, mobilePhone, tShirts];
 
 const categoryList = [
   womenDress,
-  menClothingFashion,
   compAccess,
   automobile,
   kidToys,
   sports,
-  jewelery,
   cellphone,
+  jewelery,
+  menClothingFashion,
   furniture
 ];
 const categoryImage = [
