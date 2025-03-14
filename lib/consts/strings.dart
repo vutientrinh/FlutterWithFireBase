@@ -47,3 +47,10 @@ const womenClothing = "Women Clothing",
     jewelery = "Jewelery",
     cellphone = "Cellphone & Tab",
     furniture = "Furniture";
+
+const video = "Video",
+    reviews = "Reviews",
+    sellerPolicy = "Seller Policy",
+    returnPolicy = "Return Policy",
+    supportPolicy = "Support Policy";
+const productsYouMayLike = "Products you may also like ";
