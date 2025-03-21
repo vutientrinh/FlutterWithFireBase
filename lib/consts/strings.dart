@@ -7,6 +7,8 @@ const password = "Password";
 const passwordHint = "*******";
 const forgetPass = "Forget Password";
 const login = "Login";
+const loggedIn = "Logged in successfully";
+const loggedOut = "Logged out successfully";
 const signUp = "Sign up";
 const logout = "Logout";
 const createNewAccount = "or, create a new account";
@@ -55,3 +57,5 @@ const video = "Video",
     returnPolicy = "Return Policy",
     supportPolicy = "Support Policy";
 const productsYouMayLike = "Products you may also like ";
+
+const wishList = "My Wishlist", orders = "My Orders", message = "Messages";
