@@ -3,6 +3,7 @@ import 'package:flutterwithfirebase/consts/consts.dart';
 import 'package:flutterwithfirebase/controller/auth_controller.dart';
 import 'package:flutterwithfirebase/views/auth_screen/login_screen.dart';
 import 'package:flutterwithfirebase/views/profile_screen/components/details_card.dart';
+import 'package:flutterwithfirebase/views/profile_screen/edit_profile_screen.dart';
 import 'package:flutterwithfirebase/widget_common/bg_widget.dart';
 import 'package:get/get.dart';
 
@@ -25,7 +26,9 @@ class ProfileScreen extends StatelessWidget {
                 Icons.edit,
                 color: whiteColor,
               ),
-            ).onTap(() {}),
+            ).onTap(() {
+              Get.to(()=> const EditProfileScreen());
+            }),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
