@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutterwithfirebase/consts/consts.dart';
 import 'package:flutterwithfirebase/consts/images.dart';
+import 'package:flutterwithfirebase/controller/profile_controller.dart';
 import 'package:flutterwithfirebase/widget_common/bg_widget.dart';
 import 'package:flutterwithfirebase/widget_common/custom_textfield.dart';
 import 'package:flutterwithfirebase/widget_common/our_button.dart';
+import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class EditProfileScreen extends StatefulWidget {
@@ -22,23 +24,49 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           title: const Text('Edit Profile'),
           centerTitle: true,
         ),
-        body: Center(
-          child: Column(
-            children: [
-              Image.asset(
-                  imgProfile2,
-                  width: 100,
-                  fit: BoxFit.fill,
-                ).box.roundedFull.clip(Clip.antiAlias).make(),
-                ourButton(color: redColor, onPress: () {
-                  // Logic to change profile picture
-                }, textColor: whiteColor, title: 'Change'),
-              20.heightBox,
-              customTextField(hint: nameHint, title: name, isPass: false),
-              customTextField(hint: emailHint, title: password, isPass: false),
-            ],
-          ).box.white.shadowSm.rounded.padding(const EdgeInsets.all(16)).margin(const EdgeInsets.only(top : 50 )).make(),
-        ),
+        body: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset(
+              imgProfile2,
+              width: 100,
+              fit: BoxFit.fill,
+            ).box.roundedFull.clip(Clip.antiAlias).make(),
+            10.heightBox,
+            ourButton(
+                color: redColor,
+                onPress: () {
+                  Get.find<ProfileController>().changeImage(context);
+                },
+                textColor: whiteColor,
+                title: 'Change'),
+            const Divider(),
+            20.heightBox,
+            customTextField(hint: nameHint, title: name, isPass: false),
+            customTextField(hint: emailHint, title: password, isPass: false),
+            20.heightBox,
+            SizedBox(
+              width: context.screenWidth - 60,
+              child: ourButton(
+                  color: redColor,
+                  onPress: () {
+                    // Logic to change profile picture
+                  },
+                  textColor: whiteColor,
+                  title: 'Save'),
+            ),
+          ],
+        )
+            .box
+            .white
+            .shadowSm
+            .rounded
+            .padding(const EdgeInsets.all(16))
+            .margin(
+              const EdgeInsets.only(top: 50, left: 12, right: 12),
+            )
+            .rounded
+            .make(),
       ),
     );
   }

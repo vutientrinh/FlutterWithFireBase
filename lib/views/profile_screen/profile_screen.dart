@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterwithfirebase/consts/consts.dart';
 import 'package:flutterwithfirebase/controller/auth_controller.dart';
+import 'package:flutterwithfirebase/controller/profile_controller.dart';
 import 'package:flutterwithfirebase/views/auth_screen/login_screen.dart';
 import 'package:flutterwithfirebase/views/profile_screen/components/details_card.dart';
 import 'package:flutterwithfirebase/views/profile_screen/edit_profile_screen.dart';
@@ -12,7 +13,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var controller = Get.put(AuthController());
+    var controller = Get.put(ProfileController());
     return bgWidget(
         child: Scaffold(
       body: SafeArea(
