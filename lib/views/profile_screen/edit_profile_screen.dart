@@ -24,7 +24,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         ),
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
                   imgProfile2,
