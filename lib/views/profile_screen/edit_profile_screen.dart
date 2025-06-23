@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutterwithfirebase/consts/consts.dart';
 import 'package:flutterwithfirebase/consts/images.dart';
@@ -16,6 +18,8 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
+  var controller = Get.find<ProfileController>();
+
   @override
   Widget build(BuildContext context) {
     return bgWidget(
@@ -27,16 +31,18 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         body: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset(
-              imgProfile2,
-              width: 100,
-              fit: BoxFit.fill,
-            ).box.roundedFull.clip(Clip.antiAlias).make(),
+            controller.profileImagePath.isEmpty
+                ? Image.asset(
+                    imgProfile2,
+                    width: 100,
+                    fit: BoxFit.fill,
+                  ).box.roundedFull.clip(Clip.antiAlias).make()
+                : Image.file(File(controller.profileImagePath.value)),
             10.heightBox,
             ourButton(
                 color: redColor,
                 onPress: () {
-                  Get.find<ProfileController>().changeImage(context);
+                  controller.changeImage(context);
                 },
                 textColor: whiteColor,
                 title: 'Change'),
