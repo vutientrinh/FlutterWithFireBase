@@ -5,7 +5,6 @@ import 'package:flutterwithfirebase/consts/consts.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController {
-
   var isLoading = false.obs;
 
   var emailController = TextEditingController();
@@ -35,25 +34,25 @@ class AuthController extends GetxController {
 
   storeUserData({name, password, email}) async {
     DocumentReference store =
-        await firestore.collection(usersCollection).doc(currentUser!.uid);
+        firestore.collection(usersCollection).doc(currentUser!.uid);
     store.set({
       'name': name,
       'password': password,
       'email': email,
       'imageUrl': '',
       'id': currentUser!.uid,
-      'cart_count':"00",
-      'wishlist_count':"00",
-      'order_count':"00",
-
+      'cart_count': "00",
+      'wishlist_count': "00",
+      'order_count': "00",
     });
   }
 
   signoutMethod({context}) async {
     try {
       await auth.signOut();
+      print("Logout");
     } catch (e) {
-      VxToast.show(context, msg: e.toString() + "sign out errol");
+      VxToast.show(context, msg: "${e}sign out errol");
     }
   }
 }
