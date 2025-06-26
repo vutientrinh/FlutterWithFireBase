@@ -64,6 +64,7 @@ class LoginScreen extends StatelessWidget {
                                         }
                                       else
                                         {
+                                          VxToast.show(context, msg: "Login fail!!!!"),
                                           controller.isLoading(false),
                                         }
                                     });

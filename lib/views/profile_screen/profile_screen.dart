@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterwithfirebase/consts/consts.dart';
 import 'package:flutterwithfirebase/controller/auth_controller.dart';
@@ -19,29 +20,16 @@ class ProfileScreen extends StatelessWidget {
     return bgWidget(
       child: Scaffold(
           body: StreamBuilder(
-              stream: FireStoreServices.getUser(currentUser!.uid),
+              stream: FireStoreServices.getUser(
+                  FirebaseAuth.instance.currentUser?.uid),
               builder: (BuildContext context,
-                  AsyncSnapshot<QuerySnapshot> snapshot) {
+                  AsyncSnapshot<DocumentSnapshot> snapshot) {
                 if (!snapshot.hasData) {
                   return const Center(
                       child: CircularProgressIndicator(
                           valueColor: AlwaysStoppedAnimation(redColor)));
                 }
-                if (snapshot.data!.docs.isEmpty) {
-                  return Center(
-                    child: OutlinedButton(
-                        style: OutlinedButton.styleFrom(
-                            side: const BorderSide(
-                          color: whiteColor,
-                        )),
-                        onPressed: () async {
-                          await Get.put(AuthController()).signoutMethod();
-                          Get.offAll(() => const LoginScreen());
-                        },
-                        child: logout.text.make()),
-                  );
-                }
-                var data = snapshot.data!.docs[0];
+                var data = snapshot.data!.data() as Map<String, dynamic>;
                 return SafeArea(
                     child: Column(
                   children: [
