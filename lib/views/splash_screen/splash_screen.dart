@@ -16,16 +16,13 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
-  changeScreen(){
-    Future.delayed(Duration(seconds: 3),(){
+  changeScreen() {
+    Future.delayed(Duration(seconds: 3), () {
       auth.authStateChanges().listen((User? user) {
         if (user == null && mounted) {
-          // User is signed out
-          Get.to(()=> const LoginScreen());
-        } else {
-          // User is signed in
-          Get.to(()=> const Home());
+          Get.offAll(() => const LoginScreen());
+        } else if (user != null && mounted) {
+          Get.offAll(() => const Home());
         }
       });
       // Get.to(()=>LoginScreen());
@@ -38,7 +35,6 @@ class _SplashScreenState extends State<SplashScreen> {
     changeScreen();
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -59,11 +55,9 @@ class _SplashScreenState extends State<SplashScreen> {
             appversion.text.white.make(),
             Spacer(),
             30.heightBox,
-
           ],
         ),
       ),
-
     );
   }
 }
