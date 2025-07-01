@@ -17,7 +17,10 @@ class ProfileController extends GetxController {
   var isLoading = false.obs;
 
   var nameController = TextEditingController();
-  var passController = TextEditingController();
+  var oldPassController = TextEditingController();
+  var newPassController = TextEditingController();
+
+
 
   changeImage(context) async {
     var status = await Permission.photos.request();
