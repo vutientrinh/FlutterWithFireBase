@@ -83,27 +83,31 @@ class EditProfileScreen extends StatelessWidget {
                             onPress: () async {
                               controller.isLoading(true);
 
-
-                              if(controller.profileImagePath.value.isNotEmpty){
+                              if (controller
+                                  .profileImagePath.value.isNotEmpty) {
                                 await controller.uploadProfileImage();
-                              }
-                              else{
+                              } else {
                                 controller.profileImageLink = data['imageUrl'];
                               }
 
-                              if(data['password'] == controller.oldPassController.text){
+                              if (data['password'] ==
+                                  controller.oldPassController.text) {
+                                await controller.changeAuthPassword(
+                                  email: data['email'],
+                                  password: controller.oldPassController.text,
+                                  newPassword: controller.newPassController.text,
+                                );
                                 await controller.updateProfile(
                                   imageUrl: controller.profileImageLink,
                                   name: controller.nameController.text,
                                   password: controller.newPassController.text,
                                 );
                                 VxToast.show(context, msg: 'Profile updated');
-                              }
-                              else{
-                                VxToast.show(context, msg: 'Wrong old password');
+                              } else {
+                                VxToast.show(context,
+                                    msg: 'Wrong old password');
                                 controller.isLoading(false);
                               }
-
                             },
                             textColor: whiteColor,
                             title: 'Save'),
