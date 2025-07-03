@@ -67,7 +67,7 @@ class EditProfileScreen extends StatelessWidget {
                     isPass: false),
                 10.heightBox,
                 customTextField(
-                    controller: controller.oldPassController,
+                    controller: controller.newPassController,
                     hint: passwordHint,
                     title: newPass,
                     isPass: false),
