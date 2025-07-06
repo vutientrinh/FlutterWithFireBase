@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterwithfirebase/consts/consts.dart';
+import 'package:flutterwithfirebase/controller/product_controller.dart';
 import 'package:flutterwithfirebase/views/category_screen/item_details.dart';
 import 'package:flutterwithfirebase/widget_common/bg_widget.dart';
 import 'package:get/get.dart';
@@ -11,6 +12,7 @@ class CategoryDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var controller = Get.find<ProductController>();
     return bgWidget(
         child: Scaffold(
       appBar: AppBar(
@@ -19,15 +21,15 @@ class CategoryDetails extends StatelessWidget {
       body: Container(
         padding: EdgeInsets.all(12),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: List.generate(
-                    6,
-                    (index) => "Baby Clothing"
-                        .text
+                    controller.subcat.length,
+                    (index) => "${controller.subcat[index]}".text
                         .size(12)
                         .fontFamily(semibold)
                         .color(darkFontGrey)
@@ -84,8 +86,8 @@ class CategoryDetails extends StatelessWidget {
                           .padding(const EdgeInsets.all(8))
                           .outerShadowSm
                           .make()
-                      .onTap((){
-                        Get.to(()=>ItemDetails(title: "Dumy item"));
+                          .onTap(() {
+                        Get.to(() => ItemDetails(title: "Dumy item"));
                       });
                     })),
           ],
