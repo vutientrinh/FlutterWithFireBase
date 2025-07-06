@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterwithfirebase/consts/consts.dart';
+import 'package:flutterwithfirebase/controller/product_controller.dart';
 import 'package:flutterwithfirebase/views/category_screen/category_details.dart';
 import 'package:flutterwithfirebase/widget_common/bg_widget.dart';
 import 'package:get/get.dart';
@@ -9,6 +10,7 @@ class CategoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var controller = Get.put(ProductController());
     return bgWidget(
         child: Scaffold(
       appBar: AppBar(
@@ -37,6 +39,7 @@ class CategoryScreen extends StatelessWidget {
                 categoryList[index].text.color(darkFontGrey).align(TextAlign.center).make(),
               ],
             ).box.rounded.clip(Clip.antiAlias).white.make().onTap((){
+              controller.getSubCategories(categoryList[index]);
               Get.to(()=>CategoryDetails(title: categoryList[index]));
             });
           },
