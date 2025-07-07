@@ -11,6 +11,7 @@ class ItemDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(Colors.purple.value);
     return Scaffold(
       backgroundColor: whiteColor,
       appBar: AppBar(
