@@ -6,8 +6,10 @@ import '../../consts/colors.dart';
 
 class ItemDetails extends StatelessWidget {
   final String? title;
+  final dynamic data;
 
-  const ItemDetails({Key? key, required this.title}) : super(key: key);
+  const ItemDetails({Key? key, required this.title, this.data})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,11 +43,12 @@ class ItemDetails extends StatelessWidget {
                   VxSwiper.builder(
                       autoPlay: true,
                       height: 350,
-                      itemCount: 3,
+                      itemCount: data['p_imgs'].length,
                       aspectRatio: 16 / 9,
+                      viewportFraction: 0.8,
                       itemBuilder: (context, index) {
-                        return Image.asset(
-                          imgFc5,
+                        return Image.network(
+                          data['p_imgs'][index],
                           width: double.infinity,
                           fit: BoxFit.cover,
                         );
