@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "1026314046569",
-    "project_id": "midterm-firebase-50ba4",
-    "storage_bucket": "midterm-firebase-50ba4.appspot.com"
+    "project_number": "731395861123",
+    "project_id": "emart-b0f87",
+    "storage_bucket": "emart-b0f87.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1026314046569:android:1cfec82e7bca9c233da6f8",
+        "mobilesdk_app_id": "1:731395861123:android:d1995fbfcd28002de449b6",
         "android_client_info": {
           "package_name": "com.example.flutterwithfirebase"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDh-ZxagKtyN4BZIw2v282sKTTjovuXLOc"
+          "current_key": "AIzaSyAWFxdCL5wcCCJl3ct_jNYOpOPgqOPak88"
         }
       ],
       "services": {
