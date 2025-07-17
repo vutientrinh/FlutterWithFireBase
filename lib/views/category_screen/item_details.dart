@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutterwithfirebase/consts/consts.dart';
 import 'package:flutterwithfirebase/widget_common/our_button.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import '../../consts/colors.dart';
+import '../../controller/product_controller.dart';
 
 class ItemDetails extends StatelessWidget {
   final String? title;
@@ -13,7 +16,7 @@ class ItemDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(Colors.purple.value);
+    var controller = Get.find<ProductController>();
     return Scaffold(
       backgroundColor: whiteColor,
       appBar: AppBar(
@@ -45,7 +48,7 @@ class ItemDetails extends StatelessWidget {
                       height: 350,
                       itemCount: data['p_imgs'].length,
                       aspectRatio: 16 / 9,
-                      viewportFraction: 0.8,
+                      viewportFraction: 1.0,
                       itemBuilder: (context, index) {
                         return Image.network(
                           data['p_imgs'][index],
@@ -61,15 +64,16 @@ class ItemDetails extends StatelessWidget {
                       .make(),
                   10.heightBox,
                   VxRating(
+                    isSelectable: false,
+                    value: double.parse(data['p_rating']),
                     onRatingUpdate: (value) {},
                     normalColor: textfieldGrey,
                     selectionColor: golden,
                     count: 5,
                     size: 25,
-                    stepInt: true,
                   ),
                   10.heightBox,
-                  "\&30,000"
+                  "${data['p_price']}"
                       .text
                       .color(redColor)
                       .fontFamily(bold)
@@ -85,7 +89,7 @@ class ItemDetails extends StatelessWidget {
                           children: [
                             "Seller".text.white.fontFamily(semibold).make(),
                             5.heightBox,
-                            "In House Brands"
+                            "${data['p_seller']}"
                                 .text
                                 .fontFamily(semibold)
                                 .color(darkFontGrey)
@@ -119,13 +123,21 @@ class ItemDetails extends StatelessWidget {
                           ),
                           Row(
                             children: List.generate(
-                                3,
-                                (index) => VxBox()
-                                    .size(40, 40)
-                                    .color(Vx.randomPrimaryColor)
-                                    .roundedFull
-                                    .margin(EdgeInsets.symmetric(horizontal: 4))
-                                    .make()),
+                                data['p_colors'].length,
+                                (index) => Stack(
+                                    alignment: Alignment.center,
+                                    children: [
+
+                                      VxBox()
+                                          .size(40, 40)
+                                          .color(Color(data['p_colors'][index])
+                                              .withOpacity(1.0))
+                                          .roundedFull
+                                          .margin(EdgeInsets.symmetric(
+                                              horizontal: 4))
+                                          .make(),
+                                      const Icon(Icons.done, color: Colors.white,)
+                                    ])),
                           )
                         ],
                       ).box.padding(const EdgeInsets.all(8)).make(),
@@ -136,21 +148,25 @@ class ItemDetails extends StatelessWidget {
                             child:
                                 "Quantity: ".text.color(textfieldGrey).make(),
                           ),
-                          Row(
-                            children: [
-                              IconButton(
-                                  onPressed: () {}, icon: Icon(Icons.remove)),
-                              "0"
-                                  .text
-                                  .size(16)
-                                  .color(darkFontGrey)
-                                  .fontFamily(bold)
-                                  .make(),
-                              IconButton(
-                                  onPressed: () {}, icon: Icon(Icons.add)),
-                              10.widthBox,
-                              "(0 available)".text.color(textfieldGrey).make(),
-                            ],
+                          Obx(
+                            () => Row(
+                              children: [
+                                IconButton(
+                                    onPressed: () {}, icon: Icon(Icons.remove)),
+                                controller.quantity.value.text
+                                    .size(16)
+                                    .color(darkFontGrey)
+                                    .fontFamily(bold)
+                                    .make(),
+                                IconButton(
+                                    onPressed: () {}, icon: Icon(Icons.add)),
+                                10.widthBox,
+                                "(${data['p_quantity']} available)"
+                                    .text
+                                    .color(textfieldGrey)
+                                    .make(),
+                              ],
+                            ),
                           )
                         ],
                       ).box.padding(const EdgeInsets.all(8)).make(),
@@ -177,10 +193,7 @@ class ItemDetails extends StatelessWidget {
                       .fontFamily(semibold)
                       .make(),
                   10.heightBox,
-                  "This is a dummy item and dummy description here... This is the space for description if we have data about the item in the database"
-                      .text
-                      .color(darkFontGrey)
-                      .make(),
+                  "${data['p_desc']}".text.color(darkFontGrey).make(),
                   10.heightBox,
                   ListView(
                     physics: const NeverScrollableScrollPhysics(),
