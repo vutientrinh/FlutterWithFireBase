@@ -34,23 +34,31 @@ class Home extends StatelessWidget {
       ProfileScreen()
     ];
 
-    return Scaffold(
-      body: Column(
-        children: [
-          Obx(()=> Expanded(child: navBody.elementAt(controller.currentNavIndex.value)),)
-        ],
-      ),
-      bottomNavigationBar: Obx(
-        () => BottomNavigationBar(
-          currentIndex: controller.currentNavIndex.value,
-          selectedItemColor: redColor,
-          selectedLabelStyle: TextStyle(fontFamily: semibold),
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: whiteColor,
-          items: navbarItems,
-          onTap: (value) {
-            controller.currentNavIndex.value = value;
-          },
+    return WillPopScope(
+      onWillPop: () async {
+        return false;
+      },
+      child: Scaffold(
+        body: Column(
+          children: [
+            Obx(
+              () => Expanded(
+                  child: navBody.elementAt(controller.currentNavIndex.value)),
+            )
+          ],
+        ),
+        bottomNavigationBar: Obx(
+          () => BottomNavigationBar(
+            currentIndex: controller.currentNavIndex.value,
+            selectedItemColor: redColor,
+            selectedLabelStyle: TextStyle(fontFamily: semibold),
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: whiteColor,
+            items: navbarItems,
+            onTap: (value) {
+              controller.currentNavIndex.value = value;
+            },
+          ),
         ),
       ),
     );
