@@ -7,6 +7,8 @@ import 'package:flutterwithfirebase/views/home_screen/home_screen.dart';
 import 'package:flutterwithfirebase/views/profile_screen/profile_screen.dart';
 import 'package:get/get.dart';
 
+import '../../widget_common/exit_dialog.dart';
+
 class Home extends StatelessWidget {
   const Home({super.key});
 
@@ -36,6 +38,7 @@ class Home extends StatelessWidget {
 
     return WillPopScope(
       onWillPop: () async {
+        showDialog(context: context, builder: (context)=> exitDialog());
         return false;
       },
       child: Scaffold(
