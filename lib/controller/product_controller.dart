@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:flutterwithfirebase/consts/consts.dart';
 import 'package:flutterwithfirebase/models/category_model.dart';
 import 'package:get/get.dart';
 
@@ -37,5 +38,24 @@ class ProductController extends GetxController {
 
   calculateTotalPrice(price) {
     totalPrice = price * quantity.value;
+  }
+  addToCart(
+      title,
+      img,
+      sellerName,
+      color,
+      qty,
+      tprice
+      )
+  async{
+    await firestore.collection(cartCollection).doc().set({
+      'title':title,
+      'img':img,
+      'sellerName':sellerName,
+      'color':color,
+      'qty':qty,
+      'tprice':tprice,
+      'added_by':currentUser!.uid
+    });
   }
 }
