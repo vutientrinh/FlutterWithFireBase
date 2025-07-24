@@ -20,6 +20,7 @@ class ItemDetails extends StatelessWidget {
     return Scaffold(
       backgroundColor: whiteColor,
       appBar: AppBar(
+        leading: IconButton(onPressed: (){controller.resetValues();}, icon: Icon(Icons.arrow_back)),
         title: title!.text.color(darkFontGrey).fontFamily(bold).make(),
         actions: [
           IconButton(
